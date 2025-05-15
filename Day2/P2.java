@@ -25,7 +25,6 @@ public class StudentManagementSystem {
     private static ArrayList<Student> studentList = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
 
-    // Method to add a new student
     public static void addStudent() {
         System.out.print("Enter Student ID: ");
         String id = scanner.nextLine();
@@ -38,7 +37,6 @@ public class StudentManagementSystem {
         System.out.println("Student added successfully.\n");
     }
 
-    // Method to remove a student by ID
     public static void removeStudent() {
         System.out.print("Enter Student ID to remove: ");
         String id = scanner.nextLine();
@@ -50,7 +48,6 @@ public class StudentManagementSystem {
         }
     }
 
-    // Method to search for a student by ID
     public static void searchStudent() {
         System.out.print("Enter Student ID to search: ");
         String id = scanner.nextLine();
@@ -63,7 +60,6 @@ public class StudentManagementSystem {
         System.out.println("Student ID not found.\n");
     }
 
-    // Method to display all students
     public static void displayAllStudents() {
         if (studentList.isEmpty()) {
             System.out.println("No students to display.\n");
