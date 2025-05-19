@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class UpdateStudentName {
     public static void main(String[] args) {
-        String url  = "jdbc:mysql://localhost:3306/your_db?useSSL=false&serverTimezone=UTC";
+        String url  = "jdbc:mysql://localhost:3306/jdbc";
         String user = "your_user";
         String pass = "your_password";
 
