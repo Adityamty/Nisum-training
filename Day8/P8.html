@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Filter Users by City</title>
+</head>
+<body>
+
+  <h2>Filter Users by City</h2>
+
+  <label for="citySelect">Select City:</label>
+  <select id="citySelect">
+    <option value="">--All Cities--</option>
+  </select>
+
+  <ul id="userList"></ul>
+
+  <script>
+    let allUsers = [];
+
+    
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(users => {
+        allUsers = users;
+
+        
+        const cities = [...new Set(users.map(user => user.address.city))];
+
+        
+        const select = document.getElementById('citySelect');
+        cities.forEach(city => {
+          const option = document.createElement('option');
+          option.value = city;
+          option.textContent = city;
+          select.appendChild(option);
+        });
+
+    
+        displayUsers(users);
+      })
+      .catch(error => console.error('Error:', error));
+
+    
+    document.getElementById('citySelect').addEventListener('change', function () {
+      const selectedCity = this.value;
+      const filtered = selectedCity
+        ? allUsers.filter(user => user.address.city === selectedCity)
+        : allUsers;
+      displayUsers(filtered);
+    });
+
+    
+    function displayUsers(users) {
+      const userList = document.getElementById('userList');
+      userList.innerHTML = ''; 
+      users.forEach(user => {
+        const li = document.createElement('li');
+        li.textContent = `${user.name} - ${user.email} (${user.address.city})`;
+        userList.appendChild(li);
+      });
+    }
+  </script>
+
+</body>
+</html>
