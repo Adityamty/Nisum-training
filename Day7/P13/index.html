@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsive Image Gallery</title>
+  <style>
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 10px;
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery">
+    <img src="Images\cloudy.png" alt="Image 1" />
+    <img src="Images\cloudy.png" alt="Image 2" />
+    <img src="Images\raining.png" alt="Image 3" />
+    <img src="Images\raining.png" alt="Image 4" />
+    <img src="Images\sun.png" alt="Image 5" />
+    <img src="Images\sun.png" alt="Image 6" />
+  </div>
+</body>
+</html>
