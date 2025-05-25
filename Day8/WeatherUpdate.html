@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Static Weather App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #e0f7fa;
+    }
+    .container {
+      display: flex;
+      flex-direction: row;
+      padding: 20px;
+    }
+    .left, .right {
+      padding: 20px;
+    }
+    .left {
+      width: 60%;
+    }
+    .right {
+      width: 40%;
+    }
+    .input-container {
+      text-align: right;
+    }
+    input[type="text"] {
+      padding: 8px;
+      width: 60%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .weather-details {
+      margin-top: 30px;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .weather-details h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="left">
+      <div class="weather-details" id="weatherDisplay">
+        <h2>Weather Info</h2>
+        <p>Enter a country on the right to see weather details.</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="input-container">
+        <input type="text" id="countryInput" placeholder="Enter country name..." />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const weatherData = {
+      India: {
+        temperature: "34°C",
+        condition: "Sunny",
+        humidity: "42%",
+        wind: "12 km/h"
+      },
+      USA: {
+        temperature: "23°C",
+        condition: "Cloudy",
+        humidity: "55%",
+        wind: "20 km/h"
+      },
+      Canada: {
+        temperature: "18°C",
+        condition: "Rainy",
+        humidity: "80%",
+        wind: "15 km/h"
+      },
+      Germany: {
+        temperature: "21°C",
+        condition: "Clear",
+        humidity: "50%",
+        wind: "10 km/h"
+      }
+    };
+
+    const input = document.getElementById("countryInput");
+    const weatherDisplay = document.getElementById("weatherDisplay");
+
+    input.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        const country = input.value.trim();
+        if (weatherData[country]) {
+          const data = weatherData[country];
+          weatherDisplay.innerHTML = `
+            <h2>Weather in ${country}</h2>
+            <p><strong>Temperature:</strong> ${data.temperature}</p>
+            <p><strong>Condition:</strong> ${data.condition}</p>
+            <p><strong>Humidity:</strong> ${data.humidity}</p>
+            <p><strong>Wind:</strong> ${data.wind}</p>
+          `;
+        } else {
+          weatherDisplay.innerHTML = `<h2>No Data</h2><p>Sorry, weather data for "${country}" is not available.</p>`;
+        }
+        input.value = "";
+      }
+    });
+  </script>
+
+</body>
+</html>
