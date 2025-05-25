@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fetch API with Error Handling</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #output {
+      margin-top: 20px;
+      white-space: pre-wrap;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Fetch API with Error Handling</h1>
+  <button id="fetchBtn">Fetch Data</button>
+
+  <div id="output">Click the button to fetch data.</div>
+
+  <script>
+    const output = document.getElementById('output');
+    const fetchBtn = document.getElementById('fetchBtn');
+
+    fetchBtn.addEventListener('click', async () => {
+      output.textContent = 'Loading...';
+      output.classList.remove('error');
+
+      try {
+        const response = await fetch('https://api.publicapis.org/entries');
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Display some data (e.g. count of APIs returned)
+        output.textContent = `Total APIs fetched: ${data.count}\n\nSample API:\n${JSON.stringify(data.entries[0], null, 2)}`;
+      } catch (error) {
+        output.textContent = `Error: ${error.message}`;
+        output.classList.add('error');
+      }
+    });
+  </script>
+</body>
+</html>
