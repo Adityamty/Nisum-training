@@ -53,10 +53,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // Test padding
-        System.out.println("Padded storeId (23): " + padStoreId("23")); // 0023
+        
+        System.out.println("Padded storeId (23): " + padStoreId("23")); 
 
-        // Sample employees
+
         List<Employee> employees = Arrays.asList(
             new Employee(101, "John", "Doe", "HR"),
             new Employee(102, "Jane", "Smith", "Finance"),
@@ -65,15 +65,15 @@ public class Main {
             new Employee(105, "Bob", "Davis", "Finance")
         );
 
-        // Test excludeDepartment
+        
         System.out.println("\nEmployees NOT in HR:");
         excludeDepartment(employees, "HR").forEach(System.out::println);
 
-        // Test sortByFirstName
+    
         System.out.println("\nEmployees sorted by first name:");
         sortByFirstName(employees).forEach(System.out::println);
 
-        // Test findHighestEmpId
+    
         Optional<Employee> maxEmp = findHighestEmpId(employees);
         System.out.println("\nEmployee with highest empId:");
         maxEmp.ifPresent(System.out::println);
