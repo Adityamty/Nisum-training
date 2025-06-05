@@ -21,10 +21,10 @@ class Employee {
 public class SortBySalary {
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
-            new Employee("Alice", 60000),
-            new Employee("Bob", 50000),
-            new Employee("Charlie", 70000),
-            new Employee("Diana", 55000)
+            new Employee("Aditya", 60000),
+            new Employee("Bhuvi", 50000),
+            new Employee("Chahal", 70000),
+            new Employee("Dina", 55000)
         );
 
         employees.sort(Comparator.comparingDouble(Employee::getSalary));
